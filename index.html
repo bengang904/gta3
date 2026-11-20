@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  <meta name="robots" content="noindex, nofollow">
+  <title>GTA3 Web</title>
+  <link rel="icon" href="/favicon.ico">
+  <script>
+    window.APP_VERSION = "1.1.5";
+    document.write(`
+      <link rel="stylesheet" href="main.css?v=${window.APP_VERSION}">
+      <link rel="stylesheet" href="touch.css?v=${window.APP_VERSION}">
+    `);
+  </script>
+</head>
+
+<body data-is-touch="0" data-state-menu="1" data-state-cutscene="0" data-state-car="0" data-state-gun="0"
+  data-state-car-gun="0" data-state-job="0" data-state-veh-gun="0" data-state-download="0">
+
+  <div id="home-view" class="screen-view">
+    <div class="center-content">
+      <div class="logo-area">
+        <h1 class="header-title">III Web</h1>
+      </div>
+      <div class="menu-box">
+        <button id="btn-play-game" class="action-btn main-action-btn">PLAY GAME</button>
+        <button id="btn-open-saves" class="action-btn main-action-btn" style="margin-top: 10px;">SAVE MANAGER</button>
+      </div>
+    </div>
+  </div>
+
+  <div id="save-view" class="screen-view" style="display: none;">
+    <div class="center-content save-page-content">
+      <h1 class="header-line1">Save Manager</h1>
+      <div class="global-actions">
+        <button id="btn-save-back" class="action-btn">BACK</button>
+        <button id="btn-save-refresh" class="action-btn">REFRESH</button>
+        <button id="btn-save-wipe" class="action-btn btn-red">WIPE DATABASE</button>
+      </div>
+      <input id="save-file-input" type="file" style="display:none;" accept=".b">
+      <div id="slots-container" class="slots-list">
+      </div>
+    </div>
+  </div>
+
+  <div id="game-container">
+    <div id="wrap">
+      <canvas id="canvas" width="1280" height="720" tabindex="0"></canvas>
+      <input id="cheat-input" type="text" autocapitalize="none" autocomplete="off" autocorrect="off" spellcheck="false"
+        style="position: absolute; top: -100px; left: -100px; width: 1px; height: 1px; z-index: -1; opacity: 0;" />
+    </div>
+
+    <div id="status-overlay" class="status-overlay" style="display: none;">
+      <div id="loading-box" class="loading-container">
+        <h2 class="loading-text">LOADING...</h2>
+        <div id="loading-subtext" class="loading-subtext">this may take some time on first load, be patient</div>
+        <div class="progress-bar-bg">
+          <div id="loading-bar-fill" class="progress-bar-fill"></div>
+        </div>
+        <div id="loading-percent" class="progress-percent">0%</div>
+      </div>
+
+      <div id="start-prompt" class="start-prompt" style="display: none;">
+        <h1>CLICK ANYWHERE TO START</h1>
+      </div>
+    </div>
+
+    <div class="touch-controls-wrapper">
+      <div id="touch-move"></div>
+      <div id="touch-look"></div>
+
+      <div class="touch-control run"></div>
+      <div class="touch-control jump"></div>
+      <div class="touch-control fist"></div>
+      <div class="touch-control getIn"></div>
+      <div class="touch-control drift"></div>
+      <div class="touch-control menu"></div>
+      <div class="touch-control camera"></div>
+      <div class="touch-control horn"></div>
+      <div class="touch-control job"></div>
+      <div class="touch-control radio"></div>
+      <div class="touch-control weapon"></div>
+      <div class="touch-control fireLeft"></div>
+      <div class="touch-control fireRight"></div>
+      <div class="touch-control cheats"></div>
+    </div>
+  </div>
+
+  <progress id="progress" hidden value="0" max="1"></progress>
+  <div id="status" hidden aria-hidden="true"></div>
+  <div id="tap-hint" hidden aria-hidden="true"></div>
+  
+  <script>
+    [
+      "packages.js",
+      "gamepad-emulator.js",
+      "index.js",
+      "game.js"
+    ].forEach(src => {
+      document.write(`<script src="${src}?v=${window.APP_VERSION}"><\/script>`);
+    });
+  </script>
+</body>
+
+</html>
